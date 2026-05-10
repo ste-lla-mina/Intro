@@ -6,7 +6,7 @@ const Hero = () => {
   const fields = [
     { title: "STEM & Tech", icon: <Code size={18} />, color: "text-blue-800", position: "-top-4 left-0", delay: "animate-super-float" },
     { title: "Arts & Design", icon: <Palette size={18} />, color: "text-purple-600", position: "top-1/4 -left-20", delay: "animate-magnetic" },
-    { title: "Business", icon: <Briefcase size={18} />, color: "text-blue-600", position: "top-12 -right-16", delay: "animate-super-float" },
+    { title: "Business", icon: <Briefcase size={18} />, color: "text-blue-700", position: "top-12 -right-16", delay: "animate-super-float" },
     { title: "Health & Medicine", icon: <Microscope size={18} />, color: "text-orange-600", position: "bottom-20 -right-8", delay: "animate-magnetic" },
     { title: "Agriculture", icon: <Wheat size={18} />, color: "text-green-600", position: "bottom-12 -left-12", delay: "animate-super-float" },
   ];
@@ -25,16 +25,16 @@ const Hero = () => {
           <div className="z-10 text-center lg:text-left">
             <h1 className="text-5xl lg:text-7xl font-black text-slate-900 leading-tight mb-6">
               Discover Your Potential with <br />
-              <span className="text-[#6a5acd]">HerIngress.</span>
+              <span className="text-[#115D98]">HerIngress.</span>
             </h1>
             <p className="text-lg text-slate-500 max-w-md mx-auto lg:mx-0 mb-10 font-medium leading-relaxed">
               Providing girls with the career guidance, and inspiration needed to build a bright future.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-              <button className="bg-[#6a5acd] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#5a4db8] transition-all shadow-lg active:scale-95">
+              <button className="bg-[#115D98] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#0d4a7d] transition-all shadow-lg active:scale-95">
                 Get Started <ArrowRight size={20} />
               </button>
-              <button className="border-2 border-[#6a5acd] text-[#6a5acd] px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition-all">
+              <button className="border-2 border-[#115D98] text-[#115D98] px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all">
                 Login
               </button>
             </div>
@@ -48,7 +48,7 @@ const Hero = () => {
               {fields.map((field, i) => (
                 <div key={i} className={`absolute hidden lg:flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-xl border border-slate-50 z-20 hover:scale-105 transition-transform ${field.position} ${field.delay}`}>
                   <div className={`p-1.5 rounded-lg bg-slate-50 ${field.color}`}>{field.icon}</div>
-                  <span className="font-bold text-[#6a5acd] text-xs whitespace-nowrap">{field.title}</span>
+                  <span className="font-bold text-[#115D98] text-xs whitespace-nowrap">{field.title}</span>
                 </div>
               ))}
               
@@ -61,7 +61,7 @@ const Hero = () => {
       <section className="w-full bg-[#f4f7ff] py-100 lg:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-[#6a5acd] font-black tracking-widest uppercase text-xs">Impact</span>
+            <span className="text-[#115D98] font-black tracking-widest uppercase text-xs">Impact</span>
             <h2 className="text-3xl lg:text-5xl font-black text-slate-900 mt-4">Everything you need to Succeed.</h2>
             <p className="text-slate-500 mt-4 max-w-xl mx-auto">Powerful tools designed to help you navigate your future with confidence.</p>
           </div>
@@ -82,24 +82,24 @@ const Hero = () => {
 
       <section className="w-full bg-white py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-[#6a5acd] rounded-[3rem] p-12 lg:p-20 text-white flex flex-col lg:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
+          <div className="bg-[#115D98] rounded-[3rem] p-12 lg:p-20 text-white flex flex-col lg:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
             <div className="z-10 text-center lg:text-left mb-12 lg:mb-0">
               <h2 className="text-4xl lg:text-6xl font-black mb-4">Real Impact</h2>
-              <p className="text-purple-100 opacity-90 max-w-xs leading-relaxed">Measurable change for every young woman across Rwanda.</p>
+              <p className="text-blue-100 opacity-90 max-w-xs leading-relaxed">Measurable change for every young woman across Rwanda.</p>
             </div>
 
             <div className="z-10 flex flex-wrap justify-center gap-10 lg:gap-20">
               <div className="text-center">
                 <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">500+</div>
-                <div className="text-purple-200 text-[10px] font-black uppercase tracking-widest">Scholarships</div>
+                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Scholarships</div>
               </div>
               <div className="text-center border-x border-white/10 px-10 lg:px-16">
                 <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">25</div>
-                <div className="text-purple-200 text-[10px] font-black uppercase tracking-widest">Districts</div>
+                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Districts</div>
               </div>
               <div className="text-center">
                 <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">10k+</div>
-                <div className="text-purple-200 text-[10px] font-black uppercase tracking-widest">Registered</div>
+                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Registered</div>
               </div>
             </div>
             

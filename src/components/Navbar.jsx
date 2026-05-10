@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-3 cursor-pointer">
             <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
-            <span className="text-2xl font-black italic text-[#6a5acd] tracking-tight">
+            <span className="text-2xl font-black italic text-[#115D98] tracking-tight">
               HerIngress
             </span>
           </div>
@@ -25,21 +25,21 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-semibold relative py-2 ${
-                  link.active ? 'text-[#6a5acd]' : 'text-gray-500 hover:text-[#6a5acd]'
+                  link.active ? 'text-[#115D98]' : 'text-gray-500 hover:text-[#115D98]'
                 }`}
               >
                 {link.name}
                 {link.active && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#6a5acd] rounded-full"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#115D98] rounded-full"></span>
                 )}
               </a>
             ))}
           </div>
           <div className="flex items-center gap-8">
-            <button className="text-sm font-bold text-gray-500 hover:text-[#6a5acd]">
+            <button className="text-sm font-bold text-gray-500 hover:text-[#115D98]">
               Login
             </button>
-            <button className="bg-[#6a5acd] text-white px-7 py-3 rounded-xl font-bold text-sm hover:bg-[#5a4acb] shadow-lg shadow-[#6a5acd]">
+            <button className="bg-[#115D98] text-white px-7 py-3 rounded-xl font-bold text-sm hover:bg-[#0d4a7d] shadow-lg shadow-[#115D98]">
               Join Now!
             </button>
           </div>

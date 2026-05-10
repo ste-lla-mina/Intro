@@ -58,7 +58,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <section className="w-full bg-[#f4f7ff] py-100 lg:py-28">
+      <section className="w-full bg-white py-100 lg:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-[#115D98] font-black tracking-widest uppercase text-xs">Impact</span>

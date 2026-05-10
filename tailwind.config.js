@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors:{
+         'blue' : '#115D98'
+      },
       animation: {
         'super-float': 'super-float 5s ease-in-out infinite',
       },

@@ -12,9 +12,9 @@ const Hero = () => {
   ];
 
   const impactSteps = [
-    { title: "Create Profile", desc: "Set up your digital identity. Tell us about your background, interests, and dreams.", icon: <UserPlus size={28} />, bgColor: "bg-blue-50", iconColor: "text-blue-600" },
-    { title: "Skill Test", desc: "Take interactive, offline-ready assessments to identify your strengths and growth areas.", icon: <FileText size={28} />, bgColor: "bg-red-50", iconColor: "text-red-600" },
-    { title: "Smart Match", desc: "Our AI matches you with the best-fit programs, scholarships, and mentors.", icon: <Zap size={28} />, bgColor: "bg-amber-50", iconColor: "text-amber-600" }
+    { title: "Create Profile.", desc: "Set up your digital identity. Tell us about your background, interests, and dreams.", icon: <UserPlus size={28} />, bgColor: "bg-blue-50", iconColor: "text-blue-700" },
+    { title: "Skill Test.", desc: "Take interactive, offline-ready assessments to identify your strengths and growth areas.", icon: <FileText size={28} />, bgColor: "bg-red-50", iconColor: "text-red-600" },
+    { title: "Smart Match.", desc: "Our AI matches you with the best-fit programs, scholarships, and mentors.", icon: <Zap size={28} />, bgColor: "bg-amber-50", iconColor: "text-amber-600" }
   ];
 
   return (
@@ -23,19 +23,19 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           
           <div className="z-10 text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-black text-slate-900 leading-tight mb-6">
+            <h1 className="text-5xl lg:text-6xl font-extrabold text-slate-700 leading-tight mb-6">
               Discover Your Potential with <br />
               <span className="text-[#115D98]">HerIngress.</span>
             </h1>
             <p className="text-lg text-slate-500 max-w-md mx-auto lg:mx-0 mb-10 font-medium leading-relaxed">
-              Providing girls with the career guidance, and inspiration needed to build a bright future.
+              Providing girls with career guidance, inspirations and advices needed to build a bright future.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <button className="bg-[#115D98] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#0d4a7d] transition-all shadow-lg active:scale-95">
                 Get Started <ArrowRight size={20} />
               </button>
               <button className="border-2 border-[#115D98] text-[#115D98] px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all">
-                Login
+                Sign In
               </button>
             </div>
           </div>
@@ -62,7 +62,7 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-[#115D98] font-black tracking-widest uppercase text-xs">Impact</span>
-            <h2 className="text-3xl lg:text-5xl font-black text-slate-900 mt-4">Everything you need to Succeed.</h2>
+            <h2 className="text-3xl lg:text-5xl font-black text-slate-700 mt-4">Everything you need to Succeed.</h2>
             <p className="text-slate-500 mt-4 max-w-xl mx-auto">Powerful tools designed to help you navigate your future with confidence.</p>
           </div>
 
@@ -72,7 +72,7 @@ const Hero = () => {
                 <div className={`${step.bgColor} ${step.iconColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-8`}>
                   {step.icon}
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-4">{step.title}</h3>
+                <h3 className="text-xl font-black text-slate-600 mb-4">{step.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed font-medium">{step.desc}</p>
               </div>
             ))}
@@ -80,33 +80,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <section className="w-full bg-white py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-[#115D98] rounded-[3rem] p-12 lg:p-20 text-white flex flex-col lg:flex-row justify-between items-center shadow-2xl relative overflow-hidden">
-            <div className="z-10 text-center lg:text-left mb-12 lg:mb-0">
-              <h2 className="text-4xl lg:text-6xl font-black mb-4">Real Impact</h2>
-              <p className="text-blue-100 opacity-90 max-w-xs leading-relaxed">Measurable change for every young woman across Rwanda.</p>
-            </div>
-
-            <div className="z-10 flex flex-wrap justify-center gap-10 lg:gap-20">
-              <div className="text-center">
-                <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">500+</div>
-                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Scholarships</div>
-              </div>
-              <div className="text-center border-x border-white/10 px-10 lg:px-16">
-                <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">25</div>
-                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Districts</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl lg:text-7xl font-black mb-2 tracking-tighter">10k+</div>
-                <div className="text-blue-200 text-[10px] font-black uppercase tracking-widest">Registered</div>
-              </div>
-            </div>
-            
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-          </div>
-        </div>
-      </section>
+      
 
     </div>
   );

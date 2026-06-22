@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-3 cursor-pointer">
             <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
-            <span className="text-2xl font-black italic text-[#115D98] tracking-tight">
+            <span className="text-2xl font-black text-[#115D98] tracking-tight">
               HerIngress
             </span>
           </div>

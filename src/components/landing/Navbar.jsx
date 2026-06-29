@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/hilight.jpg'; 
+import logo from '../../assets/hilight.jpg'; 
 
 const Navbar = () => {
   const navLinks = [

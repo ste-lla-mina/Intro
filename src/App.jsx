@@ -1,6 +1,7 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Navbar from './components/landing/Navbar';
+import Hero from './components/landing/Hero';
+import Footer from './components/landing/Footer'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <main className=" px-4 sm:px-6 lg:px-8 pt-10">
         <Hero />
       </main>
+      <Footer/>
     </div>
   );
 }

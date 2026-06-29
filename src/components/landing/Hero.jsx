@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Code, Palette, Briefcase, Microscope, Wheat, UserPlus, FileText, Zap } from 'lucide-react';
-import heroImage from '../assets/cap.jpg'; 
+import heroImage from '../../assets/cap.jpg'; 
 
 const Hero = () => {
   const fields = [

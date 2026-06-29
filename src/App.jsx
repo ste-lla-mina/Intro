@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/landing/Navbar';
 import Hero from './components/landing/Hero';
-import Footer from './components/landing/Footer'
+import About from './components/landing/About';
+import WhyUs from './components/landing/WhyUs';
+import Footer from './components/landing/Footer';
 
 function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      
-      <Navbar />
+  const [activeTab, setActiveTab] = useState('home');
 
-      <main className=" px-4 sm:px-6 lg:px-8 pt-10">
-        <Hero />
-      </main>
-      <Footer/>
+  return (
+    <div className="min-h-screen bg-white flex flex-col justify-between">
+      <div>
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        <main className="pt-4">
+          {activeTab === 'why' && <WhyUs/>}
+          {activeTab === 'home' && <Hero />}
+          {activeTab === 'about' && <About />}
+        </main>
+      </div>
+      
+      <Footer />
     </div>
   );
 }

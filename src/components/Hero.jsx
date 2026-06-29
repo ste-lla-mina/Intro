@@ -28,7 +28,7 @@ const Hero = () => {
               <span className="text-[#115D98]">HerIngress.</span>
             </h1>
             <p className="text-lg text-slate-500 max-w-md mx-auto lg:mx-0 mb-10 font-medium leading-relaxed">
-              Providing girls with career guidance, inspirations and advices needed to build a bright future.
+              Providing girls with career guidance and advices from mentors needed to build a bright future.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <button className="bg-[#115D98] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#0d4a7d] transition-all shadow-lg active:scale-95">

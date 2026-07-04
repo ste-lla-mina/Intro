@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from '../../assets/hilight.jpg'; 
 
-const Navbar = ({ activeTab, setActiveTab }) => {
+const Navbar = ({ activeTab, setActiveTab, onLoginClick, onJoinClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
@@ -49,10 +49,16 @@ const Navbar = ({ activeTab, setActiveTab }) => {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <button className="text-sm font-bold text-gray-500 hover:text-[#115D98]">
+            <button 
+              onClick={onLoginClick}
+              className="text-sm font-bold text-gray-500 hover:text-[#115D98]"
+            >
               Login
             </button>
-            <button className="bg-[#115D98] text-white px-7 py-3 rounded-xl font-bold text-sm hover:bg-[#0d4a7d] shadow-lg shadow-[#115D98]/20 transition-all">
+            <button 
+              onClick={onJoinClick}
+              className="bg-[#115D98] text-white px-7 py-3 rounded-xl font-bold text-sm hover:bg-[#0d4a7d] shadow-lg shadow-[#115D98]/20 transition-all"
+            >
               Join Now!
             </button>
           </div>
@@ -92,10 +98,16 @@ const Navbar = ({ activeTab, setActiveTab }) => {
           <hr className="border-gray-100" />
           
           <div className="flex flex-col gap-3">
-            <button className="w-full text-center py-3 font-bold text-gray-600 hover:text-[#115D98] rounded-xl border border-gray-100">
+            <button 
+              onClick={() => { setIsOpen(false); onLoginClick(); }}
+              className="w-full text-center py-3 font-bold text-gray-600 hover:text-[#115D98] rounded-xl border border-gray-100"
+            >
               Login
             </button>
-            <button className="w-full bg-[#115D98] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#0d4a7d] shadow-md shadow-[#115D98]/10">
+            <button 
+              onClick={() => { setIsOpen(false); onJoinClick(); }}
+              className="w-full bg-[#115D98] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#0d4a7d] shadow-md shadow-[#115D98]/10"
+            >
               Join Now!
             </button>
           </div>

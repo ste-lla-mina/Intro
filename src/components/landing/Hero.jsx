@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Code, Palette, Briefcase, Microscope, Wheat, UserPlus, FileText, Zap } from 'lucide-react';
-import heroImage from '../../assets/cap.jpg'; 
+import heroImage from '../../assets/cap.png'; 
 
-const Hero = () => {
+const Hero = ({ onLoginClick, onJoinClick }) => {
   const fields = [
     { title: "STEM & Tech", icon: <Code size={18} />, color: "text-blue-800", position: "-top-4 left-0", delay: "animate-super-float" },
     { title: "Arts & Design", icon: <Palette size={18} />, color: "text-purple-600", position: "top-1/4 -left-20", delay: "animate-magnetic" },
@@ -81,10 +81,10 @@ const Hero = () => {
               Providing girls with career guidance,inspirations and advices needed to build a bright future.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto bg-[#115D98] text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#0d4a7d] transition-all shadow-lg active:scale-95 group">
+              <button onClick={onJoinClick} className="w-full sm:w-auto bg-[#115D98] text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#0d4a7d] transition-all shadow-lg active:scale-95 group">
                 Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="w-full sm:w-auto border-2 border-[#115D98] text-[#115D98] px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all">
+              <button onClick={onLoginClick} className="w-full sm:w-auto border-2 border-[#115D98] text-[#115D98] px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all">
                 Sign In
               </button>
             </div>
@@ -160,10 +160,10 @@ const Hero = () => {
             Uncover tailored hidden opportunities, connect with standard remote mentors, and decode your ultimate skills strategy today.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-            <button className="w-full sm:w-auto bg-[#115D98] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-[#0d4a7d] transition-all active:scale-95 whitespace-nowrap">
+            <button onClick={onJoinClick} className="w-full sm:w-auto bg-[#115D98] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-[#0d4a7d] transition-all active:scale-95 whitespace-nowrap">
               Join Us
             </button>
-            <button className="w-full sm:w-auto bg-white border-2 border-slate-200 text-slate-600 px-10 py-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all whitespace-nowrap">
+            <button onClick={onLoginClick} className="w-full sm:w-auto bg-white border-2 border-slate-200 text-slate-600 px-10 py-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all whitespace-nowrap">
               Login
             </button>
           </div>

@@ -23,7 +23,7 @@ const Navbar = ({ activeTab, setActiveTab, onLoginClick, onJoinClick }) => {
           
           <div onClick={() => handleNavClick('home')} className="flex items-center gap-3 cursor-pointer">
             <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
-            <span className="text-2xl font-black text-[#115D98] tracking-tight">
+            <span className="font-sans text-2xl font-extrabold text-[#115D98]">
               HerIngress
             </span>
           </div>

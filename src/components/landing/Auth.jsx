@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import labBg from '../../assets/image1.jpg'; 
-import techBg from '../../assets/image2.jpg'; 
-
+import logo from '../../assets/hilight.jpg'; 
 const Auth = ({ children, onBackToHome }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const slides = [
     {
       title: "Access from Anywhere.",
-      subtitle: "Whether at home, at school, or on the go, we're here for you!",
+      subtitle: "Whether at home, at school, we're here for you!",
       image: labBg
     },
     {
-      title: "Unlock Your Path to Success",
-      subtitle: "Connect with mentors, access resources, and join a global community of ambitious young women.",
-      image: techBg
+      title: "Unlock Your Path.",
+      subtitle: "Connect with mentors and access resources anywhere.",
+      image: labBg
     }
   ];
 
@@ -31,7 +30,7 @@ const Auth = ({ children, onBackToHome }) => {
       
       <button 
         onClick={onBackToHome}
-        className="absolute top-6 right-6 lg:right-auto lg:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-white/90 lg:bg-slate-900 lg:text-white backdrop-blur-sm rounded-xl text-xs font-bold shadow-md hover:scale-105 active:scale-95 transition-all text-slate-700"
+        className="absolute top-6 right-6 lg:right-auto lg:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-[#115D98] text-white rounded-xl text-xs font-bold shadow-md hover:bg-[#0d4a7d] hover:scale-105 active:scale-95 transition-all"
       >
         <ArrowLeft size={14} />
         Back to Home
@@ -42,7 +41,7 @@ const Auth = ({ children, onBackToHome }) => {
           <div
             key={idx}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              idx === slideIndex ? 'opacity-40' : 'opacity-0'
+              idx === slideIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <img 
@@ -54,12 +53,13 @@ const Auth = ({ children, onBackToHome }) => {
           </div>
         ))}
 
-        <div className="relative z-10 flex flex-col items-center gap-2 mt-8">
-          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl">
-            <span className="text-3xl font-black text-[#115D98]">H</span>
-          </div>
-          <span className="text-xl font-black tracking-tight">HerIngress</span>
-        </div>
+      <div className="relative z-10 flex w-full flex-row items-center justify-center gap-3 mt-20">
+           <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl">
+           <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+            </div>
+           <span className="text-2xl font-black tracking-tight">HerIngress.</span>
+      </div>
+
 
         <div className="relative z-10 max-w-sm mx-auto text-center flex flex-col gap-4 mb-8">
           <h2 className="text-3xl font-black leading-tight transition-all duration-500">

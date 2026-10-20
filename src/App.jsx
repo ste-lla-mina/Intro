@@ -7,14 +7,22 @@ import Footer from './components/landing/Footer';
 import Auth from './components/landing/Auth';
 import Login from './components/landing/Login';
 import SignUp from './components/landing/Signup';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
+  if (activeTab === 'dashboard') {
+    return <Dashboard onLogout={() => setActiveTab('home')} />;
+  }
+
   if (activeTab === 'login') {
     return (
       <Auth onBackToHome={() => setActiveTab('home')}>
-        <Login onSwitchToSignUp={() => setActiveTab('signup')} />
+        <Login
+          onSwitchToSignUp={() => setActiveTab('signup')}
+          onLoginSuccess={() => setActiveTab('dashboard')}
+        />
       </Auth>
     );
   }
@@ -22,7 +30,10 @@ function App() {
   if (activeTab === 'signup') {
     return (
       <Auth onBackToHome={() => setActiveTab('home')}>
-        <SignUp onSwitchToLogin={() => setActiveTab('login')} />
+        <SignUp
+          onSwitchToLogin={() => setActiveTab('login')}
+          onSignUpSuccess={() => setActiveTab('dashboard')}
+        />
       </Auth>
     );
   }
@@ -30,20 +41,30 @@ function App() {
   return (
     <div className="min-h-screen bg-white flex flex-col justify-between">
       <div>
-        <Navbar 
-          activeTab={activeTab} 
-          setActiveTab={setActiveTab} 
+        <Navbar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
           onLoginClick={() => setActiveTab('login')}
           onJoinClick={() => setActiveTab('signup')}
         />
 
         <main className="pt-4">
-          {activeTab === 'why' && <WhyUs />}
-          {activeTab === 'home' && <Hero />}
+          {activeTab === 'why' && (
+            <WhyUs
+              onLoginClick={() => setActiveTab('login')}
+              onJoinClick={() => setActiveTab('signup')}
+            />
+          )}
+          {activeTab === 'home' && (
+            <Hero
+              onLoginClick={() => setActiveTab('login')}
+              onJoinClick={() => setActiveTab('signup')}
+            />
+          )}
           {activeTab === 'about' && <About />}
         </main>
       </div>
-      
+
       <Footer />
     </div>
   );

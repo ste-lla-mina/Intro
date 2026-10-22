@@ -128,8 +128,10 @@ export default function Dashboard({ onLogout }) {
         <header className="sticky top-0 z-30 border-b border-[#115D98]/10 bg-white/90 backdrop-blur">
           <div className="flex items-center justify-between gap-3 px-4 py-3 md:px-8">
             <div className="flex items-center gap-2 md:hidden">
-              <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#115D98] font-semibold text-white">H</div>
-              <span className="font-semibold text-[#115D98]">HerIngress</span>
+              <div className="grid h-9 w-9 place-items-center rounded-xl bg-white font-semibold text-white">
+                <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+              </div>
+              <span className="font-bold text-[#115D98] mt-4">HerIngress</span>
             </div>
 
             <form onSubmit={submitSearch} className="relative hidden max-w-xl flex-1 md:block">

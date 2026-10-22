@@ -26,17 +26,21 @@ const Auth = ({ children, onBackToHome }) => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 font-sans relative">
+    <div
+      className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 font-sans relative"
+      style={{ fontFamily: "'Outfit', sans-serif" }}
+    >
       
       <button 
         onClick={onBackToHome}
-        className="absolute top-6 right-6 lg:right-auto lg:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-[#115D98] text-white rounded-xl text-xs font-bold shadow-md hover:bg-[#0d4a7d] hover:scale-105 active:scale-95 transition-all"
+        className="absolute lg:fixed top-6 right-6 lg:right-auto lg:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-[#115D98] text-white rounded-xl text-xs font-bold shadow-md hover:bg-[#0d4a7d] hover:scale-105 active:scale-95 transition-all"
       >
         <ArrowLeft size={14} />
         Back to Home
       </button>
 
-      <div className="hidden lg:flex lg:col-span-5 relative overflow-hidden text-white flex-col justify-between p-12">
+      {/* Left panel: stays fixed on screen while the form on the right scrolls */}
+      <div className="hidden lg:flex lg:col-span-5 lg:sticky lg:top-0 lg:h-screen self-start overflow-hidden text-white flex-col justify-between p-12">
         {slides.map((slide, idx) => (
           <div
             key={idx}

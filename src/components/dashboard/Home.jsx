@@ -190,7 +190,7 @@ export default function Home({ onNavigate = () => {}, lang = "en" }) {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <section className="rounded-3xl border border-[#115D98]/5 bg-white/90 p-5 shadow-sm">
-          <h3 className="mb-4 text-lg font-semibold">Upcoming Events</h3>
+          <h3 className="mb-4 text-lg font-semibold">Upcoming Events.</h3>
           <ul className="space-y-3">
             {EVENTS.map((ev) => {
               const on = reminders.includes(ev.id);
@@ -215,7 +215,7 @@ export default function Home({ onNavigate = () => {}, lang = "en" }) {
         </section>
 
         <section className="rounded-3xl border border-[#115D98]/5 bg-white/90 p-5 shadow-sm">
-          <h3 className="mb-4 text-lg font-semibold">Deadline Calendar</h3>
+          <h3 className="mb-4 text-lg font-semibold">Deadline Calendar.</h3>
           <Calendar />
         </section>
       </div>

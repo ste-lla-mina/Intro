@@ -102,7 +102,7 @@ const Welcome = ({ firstName, profile, studyLabel, onContinue }) => createPortal
         <span className="rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur">{profile.age} years old</span>
       </div>
 
-      <button onClick={onContinue} className="mt-10 rounded-2xl bg-white px-12 py-4 text-sm font-bold tracking-wide text-[#115D98] shadow-xl shadow-black/20 transition-transform hover:scale-105 active:scale-95">
+      <button onClick={onContinue} className="mt-10 rounded-2xl bg-[#115D90] px-12 py-4 text-sm font-bold tracking-wide text-white shadow-xl shadow-black/20 transition-transform hover:scale-105 active:scale-95">
         CONTINUE TO LOGIN
       </button>
       <p className="mt-5 text-xs font-light text-white/60">Tip: tap the bubbles to pop them.</p>

@@ -147,7 +147,7 @@ export default function Home({ onNavigate = () => {}, lang = "en" }) {
   const [chatOpen, setChatOpen] = useState(false);
   const [unread, setUnread] = useState(1);
   const [msg, setMsg] = useState("");
-  const [chat, setChat] = useState([{ id: 0, from: "asha", text: `Hi ${USER_NAME}, I am Asha. Ask me about scholarships, CVs or interview prep.` }]);
+  const [chat, setChat] = useState([{ id: 0, from: "asha", text: `Hi ${USER_NAME}, I am Asha. Ask me about everything you need to know about scholarships, CVs or interview prep.` }]);
   const endRef = useRef(null);
   const chatOpenRef = useRef(false);
   const reduceMotion = useReducedMotion();

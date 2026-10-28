@@ -34,7 +34,7 @@ const T = {
   logout: { en: "Logout", rw: "Sohoka" },
   more: { en: "More", rw: "Ibindi" },
   search: { en: "Search opportunities, courses, people...", rw: "Shakisha amahirwe, amasomo, abantu..." },
-  quote: { en: "Every door you open makes the next one easier for another girl.", rw: "Buri rugi ufunguye rworohereza undi mukobwa ugukurikiye." },
+  quote: { en: "Every door you open makes the next one easier for more girls like you!", rw: "Buri rugi ufunguye rworohereza undi mukobwa ugukurikiye." },
 };
 const LANGS = [{ code: "en", name: "English" }, { code: "rw", name: "Kinyarwanda" }];
 

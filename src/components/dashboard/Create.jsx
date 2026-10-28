@@ -207,7 +207,7 @@ export default function Create() {
   const [notes, setNotes] = useState(INITIAL_NOTES);
   return (
     <div>
-      <h2 className="text-2xl font-semibold">Create</h2>
+      <h2 className="text-2xl font-semibold">Create.</h2>
       <p className="mb-5 text-slate-500">Your workspace for notes, CVs and interview practice.</p>
       <div className="mb-6 inline-flex max-w-full gap-1 overflow-x-auto rounded-full border border-[#115D98]/10 bg-white/90 p-1 shadow-sm [scrollbar-width:none]" role="tablist">
         {TABS.map(({ id, label, icon: Icon }) => (

@@ -86,7 +86,7 @@ export default function Community({ globalQuery = "" }) {
       {/* List */}
       <aside className={`${showChat ? "hidden" : "flex"} min-h-0 flex-col rounded-3xl border border-[#115D98]/5 bg-white/90 p-4 shadow-sm md:flex`}>
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Messages</h2>
+          <h2 className="text-lg font-semibold">Messages.</h2>
           <button onClick={() => { setNewKind(tab); setNewOpen(true); }} className="inline-flex items-center gap-1.5 rounded-full bg-[#115D98] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#0e4c7d]"><Plus size={16} /> </button>
         </div>
         <div className="mb-3 grid grid-cols-2 rounded-full bg-[#f8faff] p-1 text-sm font-medium" role="tablist">

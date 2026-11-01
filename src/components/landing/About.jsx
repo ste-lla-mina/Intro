@@ -236,7 +236,7 @@ const About = () => {
             </div>
           </div>
 
-          <blockquote className="font-outfit text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.2] tracking-[-0.025em]">
+          <blockquote className="font-outfit text-2xl sm:text-4xl lg:text-6xl font-normal leading-[1.2] tracking-[-0.025em]">
             <span className="block text-slate-800">
               {QUOTE_LINE_1.map((w, i) => (
                 <span key={i} className="q-word" style={{ '--delay': `${0.3 + i * 0.07}s` }}>
@@ -250,7 +250,7 @@ const About = () => {
                   {w}&nbsp;
                 </span>
               ))}
-              <span className="q-mark text-[#115D98]">
+              <span className="q-mark text-[#115D98] font-semibold">
                 {QUOTE_LINE_2B.map((w, i) => (
                   <span key={i} className="q-word" style={{ '--delay': `${1 + i * 0.07}s` }}>
                     {w}{i < QUOTE_LINE_2B.length - 1 ? '\u00A0' : ''}

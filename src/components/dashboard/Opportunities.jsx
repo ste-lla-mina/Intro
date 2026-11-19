@@ -41,7 +41,7 @@ export default function Opportunities({ globalQuery = "" }) {
   const [applyId, setApplyId] = useState(null);
   const [applied, setApplied] = useState([]);
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "Amina Uwase", email: "", note: "" });
+  const [form, setForm] = useState({ name: "Stella Muhizi", email: "", note: "" });
   const has = (o, s) => !s.trim() || `${o.title} ${o.org} ${o.desc} ${o.location}`.toLowerCase().includes(s.trim().toLowerCase());
   const list = OPPORTUNITIES.filter((o) => has(o, q) && has(o, globalQuery) && (!cat || o.type === cat) && (!loc || o.location === loc));
   const sel = OPPORTUNITIES.find((o) => o.id === open);

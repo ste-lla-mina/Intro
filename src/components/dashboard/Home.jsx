@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Sparkles, CalendarClock, MessageCircle, Quote, Send, X, MapPin, Clock, ChevronLeft, ChevronRight, Bookmark, BookmarkCheck, Check, BellRing, ArrowRight, Lightbulb } from "lucide-react";
 
-const USER_NAME = "Amina";
+const USER_NAME = "Stella";
 const GREET = { en: "Welcome back", rw: "Murakaza neza" };
 
 const QUOTE_INTERVAL = 8000;

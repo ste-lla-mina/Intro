@@ -122,7 +122,7 @@ function CvPreview({ tpl, cv }) {
 function CvTab({ addNote }) {
   const [tpl, setTpl] = useState(null);
   const [saved, setSaved] = useState(false);
-  const [cv, setCv] = useState({ name: "Amina Uwase", role: "Aspiring software engineer", email: "amina@example.com", summary: "Curious final-year student who loves building small apps and leading a coding club of 25 girls.", skills: "HTML, CSS, JavaScript, Teamwork" });
+  const [cv, setCv] = useState({ name: "Stella Muhizi", role: "Aspiring software engineer", email: "amina@example.com", summary: "Curious final-year student who loves building small apps and leading a coding club of 25 girls.", skills: "HTML, CSS, JavaScript, Teamwork" });
   const set = (k) => (e) => setCv({ ...cv, [k]: e.target.value });
   const saveToNotes = () => {
     addNote({ id: Date.now(), title: `CV draft: ${tpl.name}`, category: "CV Drafts", body: `${cv.name}\n${cv.role}\n${cv.email}\n\nSummary:\n${cv.summary}\n\nSkills: ${cv.skills}`, updated: "Just now" });

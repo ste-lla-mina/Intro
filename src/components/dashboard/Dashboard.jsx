@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Home as HomeIcon, Compass, Briefcase, GraduationCap, PenSquare, Star, Users,
-  Bell, Search, Globe, LogOut, User, X, MoreHorizontal, Check,
+  Bell, Search, Globe, LogOut, User, X, MoreHorizontal, Check, Bot,
 } from "lucide-react";
 import Home from "./Home";
 import Explore from "./Explore";
@@ -11,6 +11,7 @@ import Learn from "./Learn";
 import Create from "./Create";
 import RoleModels from "./RoleModels";
 import Community from "./Community";
+import Assistant from "./Assistant";
 import Profile from "./Profile";
 import logo from '../../assets/hilight.jpg'; 
 
@@ -22,12 +23,13 @@ const NAV = [
   { id: "create", icon: PenSquare, label: { en: "Create", rw: "Kora" } },
   { id: "rolemodels", icon: Star, label: { en: "Role Models", rw: "Intangarugero" } },
   { id: "community", icon: Users, label: { en: "Community", rw: "Umuryango" } },
+  { id: "assistant", icon: Bot, label: { en: "Asha AI", rw: "Asha AI" } },
 ];
 const MOBILE_MAIN = ["home", "explore", "opportunities", "learn", "create"];
-const MOBILE_MORE = ["rolemodels", "community"];
+const MOBILE_MORE = ["assistant", "rolemodels", "community"];
 
-const SECTIONS = { home: Home, explore: Explore, opportunities: Opportunities, learn: Learn, create: Create, rolemodels: RoleModels, community: Community, profile: Profile };
-const SEARCHABLE = ["explore", "opportunities", "learn", "community"];
+const SECTIONS = { home: Home, explore: Explore, opportunities: Opportunities, learn: Learn, create: Create, rolemodels: RoleModels, community: Community, assistant: Assistant, profile: Profile };
+const SEARCHABLE = ["explore", "opportunities", "learn", "community", "assistant"];
 
 const T = {
   profile: { en: "Profile", rw: "Umwirondoro" },
@@ -74,7 +76,7 @@ function Dropdown({ renderTrigger, children, width = "w-64" }) {
 }
 
 const iconBtn = "relative grid h-10 w-10 place-items-center rounded-full border border-[#115D98]/10 bg-white text-[#0B2A45] transition-colors hover:bg-[#115D98]/10";
-const avatar = "https://ui-avatars.com/api/?name=Amina+Uwase&background=115D98&color=fff&bold=true";
+const avatar = "https://ui-avatars.com/api/?name=Stella+Muhizi&background=115D98&color=fff&bold=true";
 
 export default function Dashboard({ onLogout }) {
   const [activeTab, setActiveTab] = useState("home");
@@ -225,7 +227,7 @@ export default function Dashboard({ onLogout }) {
             <span className="max-w-full truncate">{(short || label)[lang]}</span>
           </button>
         ))}
-        <button onClick={() => setMoreOpen(true)} className={`flex flex-col items-center gap-1 py-2.5 text-[10px] font-medium ${["rolemodels", "community", "profile"].includes(activeTab) ? "text-[#115D98]" : "text-slate-400"}`}>
+        <button onClick={() => setMoreOpen(true)} className={`flex flex-col items-center gap-1 py-2.5 text-[10px] font-medium ${["assistant", "rolemodels", "community", "profile"].includes(activeTab) ? "text-[#115D98]" : "text-slate-400"}`}>
           <span className="grid h-8 w-10 place-items-center"><MoreHorizontal size={20} /></span>{T.more[lang]}
         </button>
       </nav>

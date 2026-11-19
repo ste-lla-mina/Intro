@@ -65,7 +65,7 @@ export default function RoleModels() {
   const submitShare = (e) => {
     e.preventDefault();
     const title = form.title.trim();
-    setProjects((l) => [{ id: Date.now(), category: form.category, title, by: "Amina, 17", img: `https://picsum.photos/seed/${encodeURIComponent(title)}/600/360`, desc: form.desc.trim(), details: form.desc.trim(), impact: "Just shared", likes: 0, pending: true }, ...l]);
+    setProjects((l) => [{ id: Date.now(), category: form.category, title, by: "Stella, 17", img: `https://picsum.photos/seed/${encodeURIComponent(title)}/600/360`, desc: form.desc.trim(), details: form.desc.trim(), impact: "Just shared", likes: 0, pending: true }, ...l]);
     setForm({ title: "", category: "Tech", desc: "" });
     setProjectCat("All"); setTab("projects"); setShared(true);
   };

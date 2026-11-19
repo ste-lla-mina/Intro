@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Search, Plus, Send, ArrowLeft, Users, MessageSquare } from "lucide-react";
 import Modal from "./ui";
 
-const ME = "Amina Uwase";
+const ME = "Stella Muhizi";
 const av = (n, bg = "115D98") => `https://ui-avatars.com/api/?name=${encodeURIComponent(n)}&background=${bg}&color=fff&bold=true`;
 
 const INITIAL_CONVOS = [

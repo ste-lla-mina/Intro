@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const ADMIN_EMAIL = "admin@heringress.org";
 
 const Login = ({ onSwitchToSignUp, onLoginSuccess }) => {
+  const [email, setEmail] = useState("");
+
   return (
     <div className="w-full">
       <div className="mb-8 text-center lg:text-left">
@@ -11,7 +15,7 @@ const Login = ({ onSwitchToSignUp, onLoginSuccess }) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          onLoginSuccess?.();
+          onLoginSuccess?.(email);
         }}
         className="flex flex-col gap-5"
       >
@@ -20,6 +24,8 @@ const Login = ({ onSwitchToSignUp, onLoginSuccess }) => {
           <input 
             type="email" 
             placeholder="Email Address."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-5 py-3.5 rounded-xl border border-slate-200 focus:border-[#115D98] focus:ring-2 focus:ring-[#115D98]/10 outline-none text-slate-800 text-sm font-normal transition-all bg-slate-50/50"
           />
         </div>

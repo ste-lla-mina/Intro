@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pencil, Check, X, MapPin, Plus, Bell, Mail, Eye, Settings } from "lucide-react";
 
 const INITIAL_USER = {
-  name: "Amina Uwase", age: 17, location: "Kigali, Rwanda",
+  name: "Stella Muhizi", age: 17, location: "Kigali, Rwanda",
   bio: "Final-year student who loves building small apps and leading a coding club.",
   interests: ["Technology", "Scholarships", "Public Speaking", "Design"],
 };

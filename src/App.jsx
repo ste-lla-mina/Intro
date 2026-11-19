@@ -8,9 +8,16 @@ import Auth from './components/landing/Auth';
 import Login from './components/landing/Login';
 import SignUp from './components/landing/Signup';
 import Dashboard from './components/dashboard/Dashboard';
+import AdminDashboard from './components/admin/AdminDashboard';
+
+const ADMIN_EMAIL = "admin@heringress.org";
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+
+  if (activeTab === 'admin') {
+    return <AdminDashboard onLogout={() => setActiveTab('home')} />;
+  }
 
   if (activeTab === 'dashboard') {
     return <Dashboard onLogout={() => setActiveTab('home')} />;
@@ -21,7 +28,9 @@ function App() {
       <Auth onBackToHome={() => setActiveTab('home')}>
         <Login
           onSwitchToSignUp={() => setActiveTab('signup')}
-          onLoginSuccess={() => setActiveTab('dashboard')}
+          onLoginSuccess={(email) =>
+            setActiveTab(email?.toLowerCase().trim() === ADMIN_EMAIL ? 'admin' : 'dashboard')
+          }
         />
       </Auth>
     );

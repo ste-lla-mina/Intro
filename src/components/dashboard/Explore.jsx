@@ -1,123 +1,229 @@
-import { useState } from "react";
-import { Search, X, ExternalLink, Code2, HeartPulse, LineChart, ChefHat, Sprout, Palette, Wrench, GraduationCap, Scale, Microscope, Check, Plus } from "lucide-react";
-import Modal from "./ui";
+import { Fragment, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { Search, X, ExternalLink, ChevronRight, Clock, Wallet, Zap, Award, Check } from "lucide-react";
+import { FIELDS } from "./exploreData";
 
-const FIELDS = [
-  { id: "tech", name: "Tech", icon: Code2, blurb: "Build software, apps and data products.", steps: [
-    ["Learn the basics", "HTML, CSS and JavaScript fundamentals.", "https://www.freecodecamp.org/learn"],
-    ["Build small projects", "A portfolio page, a quiz game, a to-do app.", "https://www.edx.org"],
-    ["Learn a framework", "React or Python, plus Git and GitHub.", "https://www.coursera.org"],
-    ["Apply for internships", "Share your projects and join a hackathon.", "https://www.freecodecamp.org/news"],
-  ]},
-  { id: "health", name: "Health", icon: HeartPulse, blurb: "Care for people and communities.", steps: [
-    ["Strengthen your sciences", "Biology and chemistry are the foundation.", "https://www.khanacademy.org/science"],
-    ["Pick a training path", "Nursing, midwifery, pharmacy or public health.", "https://openwho.org"],
-    ["Volunteer at a clinic", "Hands-on exposure before you apply.", "https://www.coursera.org"],
-  ]},
-  { id: "business", name: "Business", icon: LineChart, blurb: "Start, run and grow ventures.", steps: [
-    ["Spot a real problem", "Talk to ten people who face it.", "https://www.khanacademy.org/economics-finance-domain"],
-    ["Test a simple version", "Sell to your first customers before building more.", "https://alison.com"],
-    ["Find funding and mentors", "Pitch competitions, grants and incubators.", "https://www.coursera.org"],
-  ]},
-  { id: "culinary", name: "Culinary Arts", icon: ChefHat, blurb: "Cook, bake and run food businesses.", steps: [
-    ["Master kitchen basics", "Knife skills, hygiene and core techniques.", "https://alison.com"],
-    ["Specialise", "Pastry, local cuisine or catering.", "https://www.futurelearn.com"],
-    ["Train in a real kitchen", "Apprenticeships at hotels and restaurants.", "https://alison.com"],
-  ]},
-  { id: "agri", name: "Agriculture", icon: Sprout, blurb: "Grow food and modern farming systems.", steps: [
-    ["Learn soil and crops", "Understand what grows best in your district.", "https://elearning.fao.org"],
-    ["Try agri-tech tools", "Irrigation, sensors and farm records.", "https://www.edx.org"],
-    ["Join a cooperative", "Share equipment, markets and knowledge.", "https://elearning.fao.org"],
-  ]},
-  { id: "creative", name: "Creative Arts", icon: Palette, blurb: "Design, music, film and storytelling.", steps: [
-    ["Pick your craft", "Illustration, photography, music or writing.", "https://www.canva.com/designschool/"],
-    ["Make something every week", "Consistency builds a portfolio.", "https://www.skillshare.com"],
-    ["Share and get paid", "Publish online and pitch small clients.", "https://www.behance.net"],
-  ]},
-  { id: "trades", name: "Trades", icon: Wrench, blurb: "Electrical, plumbing, tailoring and building.", steps: [
-    ["Choose a trade", "Visit a TVET school and ask to observe a class.", "https://alison.com"],
-    ["Get certified", "Complete a recognised vocational programme.", "https://www.edx.org"],
-    ["Start on site", "Apprentice, then open your own workshop.", "https://alison.com"],
-  ]},
-  { id: "education", name: "Education", icon: GraduationCap, blurb: "Teach, coach and shape young minds.", steps: [
-    ["Pick a subject", "Choose what you could explain with joy.", "https://www.khanacademy.org"],
-    ["Learn teaching methods", "Lesson planning and classroom care.", "https://www.coursera.org"],
-    ["Practise teaching", "Tutor classmates or lead a study club.", "https://www.futurelearn.com"],
-  ]},
-  { id: "law", name: "Law", icon: Scale, blurb: "Defend rights and advise organisations.", steps: [
-    ["Build reading and writing skills", "Debate and read widely.", "https://www.coursera.org"],
-    ["Study law", "Compare university programmes and bursaries.", "https://www.edx.org"],
-    ["Intern at a legal aid clinic", "See real cases up close.", "https://www.futurelearn.com"],
-  ]},
-  { id: "science", name: "Science", icon: Microscope, blurb: "Research, lab work and discovery.", steps: [
-    ["Love the questions", "Join a science club or fair.", "https://www.khanacademy.org/science"],
-    ["Study a science degree", "Biology, chemistry, physics or environment.", "https://www.edx.org"],
-    ["Join a research team", "Apply for lab assistant roles.", "https://www.coursera.org"],
-  ]},
-];
+const card = "rounded-3xl border border-[#115D98]/5 bg-white/90 shadow-sm";
 
-export default function Explore({ globalQuery = "" }) {
-  const [q, setQ] = useState("");
-  const [open, setOpen] = useState(null);
-  const [following, setFollowing] = useState([]);
-  const match = (f, s) => !s.trim() || `${f.name} ${f.blurb} ${f.steps.map((x) => x[0]).join(" ")}`.toLowerCase().includes(s.trim().toLowerCase());
-  const list = FIELDS.filter((f) => match(f, q) && match(f, globalQuery));
-  const field = FIELDS.find((f) => f.id === open);
-  const isFollowing = field && following.includes(field.id);
-
+function Crumbs({ items }) {
   return (
-    <div>
-      <h2 className="text-2xl font-semibold">Explore careers.</h2>
-      <p className="mb-5 text-slate-500">Pick a field to see a step-by-step roadmap.</p>
+    <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-1.5 text-sm">
+      {items.map((it, i) => (
+        <Fragment key={it.label}>
+          {i > 0 && <ChevronRight size={14} className="text-slate-300" />}
+          {it.onClick ? (
+            <button onClick={it.onClick} className="font-medium text-slate-500 transition-colors hover:text-[#115D98]">{it.label}</button>
+          ) : (
+            <span className="font-semibold text-[#0B2A45]">{it.label}</span>
+          )}
+        </Fragment>
+      ))}
+    </nav>
+  );
+}
 
-      <div className="relative mb-6 max-w-xl">
-        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search fields, e.g. farming, design, law" aria-label="Search fields"
-          className="w-full rounded-full border border-[#115D98]/10 bg-white/90 py-3 pl-11 pr-10 shadow-sm outline-none focus:ring-2 focus:ring-[#115D98]/20" />
-        {q && <button onClick={() => setQ("")} aria-label="Clear" className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#115D98]"><X size={16} /></button>}
+function Banner({ icon: Icon, title, text, children }) {
+  return (
+    <div className="relative mb-6 overflow-hidden rounded-3xl bg-gradient-to-br from-[#115D98] to-[#0B2A45] p-6 text-white shadow-xl shadow-[#115D98]/20 md:p-8">
+      <div className="absolute -right-10 -top-12 h-48 w-48 rounded-full bg-white/10" />
+      <div className="absolute -bottom-20 right-28 h-44 w-44 rounded-full bg-[#4D8FBF]/20" />
+      <div className="relative flex items-start gap-4">
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/15 backdrop-blur"><Icon size={28} /></span>
+        <div className="min-w-0">
+          <h2 className="text-2xl font-semibold md:text-3xl">{title}</h2>
+          <p className="mt-1 max-w-2xl text-white/80">{text}</p>
+        </div>
+      </div>
+      {children && <div className="relative mt-5">{children}</div>}
+    </div>
+  );
+}
+
+function StepCard({ step, index, last, open, done, onToggleOpen, onToggleDone }) {
+  return (
+    <li className="relative flex gap-4">
+      <div className="flex flex-col items-center">
+        <button onClick={onToggleDone} aria-pressed={done} aria-label={done ? `Mark step ${index + 1} not done` : `Mark step ${index + 1} done`}
+          className={`relative z-10 grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-bold text-white ring-4 ring-[#f8faff] transition-all hover:scale-110 ${done ? "bg-[#0B2A45]" : "bg-[#115D98]"}`}>
+          {done ? <Check size={16} strokeWidth={3.2} /> : index + 1}
+        </button>
+        {!last && <span className="mt-1 w-0.5 flex-1 bg-[#115D98]/15" />}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((f) => {
-          const Icon = f.icon;
-          return (
-            <button key={f.id} onClick={() => setOpen(f.id)} className="group rounded-3xl border border-[#115D98]/5 bg-white/90 p-5 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg">
-              <div className="flex items-start justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#115D98]/10 text-[#0B2A45] transition-colors group-hover:bg-[#115D98] group-hover:text-white"><Icon size={22} /></span>
-                {following.includes(f.id) && <span className="inline-flex items-center gap-1 rounded-full bg-[#115D98]/10 px-3 py-1 text-xs font-medium text-[#115D98]"><Check size={12} /> Following</span>}
+      <div className={`mb-4 min-w-0 flex-1 overflow-hidden transition-shadow hover:shadow-md ${card} ${done ? "border-[#115D98]/25" : ""}`}>
+        <button onClick={onToggleOpen} aria-expanded={open} className="flex w-full items-center justify-between gap-2 p-4 text-left">
+          <span className={`font-semibold ${done ? "text-slate-400 line-through" : "text-[#0B2A45]"}`}>{step.title}</span>
+          <ChevronRight size={16} className={`shrink-0 text-slate-400 transition-transform duration-200 ${open ? "rotate-90" : ""}`} />
+        </button>
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }} className="overflow-hidden">
+              <div className="space-y-3 border-t border-slate-100 px-4 pb-4 pt-3">
+                <p className="text-sm leading-relaxed text-slate-600">{step.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {step.links.map((l) => (
+                    <a key={l.url} href={l.url} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#115D98]/10 px-3.5 py-1.5 text-xs font-semibold text-[#115D98] transition-colors hover:bg-[#115D98] hover:text-white">
+                      {l.label} <ExternalLink size={11} />
+                    </a>
+                  ))}
+                </div>
               </div>
-              <h3 className="mt-4 text-lg font-semibold">{f.name}</h3>
-              <p className="text-sm text-slate-500">{f.blurb}</p>
-              <p className="mt-3 text-xs font-medium text-[#115D98]">{f.steps.length} steps</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </li>
+  );
+}
+
+function RoadmapView({ field, sub, doneSteps, onToggleDone, goFields, goField }) {
+  const [openStep, setOpenStep] = useState(0);
+  const total = sub.steps.length;
+  const count = doneSteps.length;
+
+  return (
+    <div className="mx-auto max-w-3xl">
+      <Crumbs items={[{ label: "Explore", onClick: goFields }, { label: field.name, onClick: goField }, { label: sub.name }]} />
+
+      <Banner icon={sub.icon} title={`${sub.name} roadmap`} text={sub.overview}>
+        <div className="flex flex-wrap gap-2 text-xs font-semibold">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 backdrop-blur"><Clock size={12} /> {sub.time}</span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 backdrop-blur"><Wallet size={12} /> {sub.cost}</span>
+        </div>
+        <div className="mt-5">
+          <div className="mb-1.5 flex justify-between text-xs font-medium text-white/80"><span>Your progress</span><span>{count} of {total} steps</span></div>
+          <div className="h-2 overflow-hidden rounded-full bg-white/20"><div className="h-full rounded-full bg-white transition-all duration-500" style={{ width: `${(count / total) * 100}%` }} /></div>
+        </div>
+      </Banner>
+
+      <section className="mb-7">
+        <h3 className="mb-3 text-sm font-semibold text-[#0B2A45]">Skills you will build</h3>
+        <div className="flex flex-wrap gap-2">
+          {sub.skills.map((s) => (
+            <span key={s} className="inline-flex items-center gap-1.5 rounded-full bg-[#115D98]/10 px-3 py-1.5 text-xs font-semibold text-[#115D98]"><Zap size={11} /> {s}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <div className="mb-4 flex items-end justify-between">
+          <h3 className="text-sm font-semibold text-[#0B2A45]">Your step-by-step roadmap</h3>
+          <p className="text-xs text-slate-400">Tap a number to mark it done</p>
+        </div>
+        <ol>
+          {sub.steps.map((step, i) => (
+            <StepCard key={step.title} step={step} index={i} last={i === total - 1}
+              open={openStep === i} done={doneSteps.includes(i)}
+              onToggleOpen={() => setOpenStep(openStep === i ? null : i)} onToggleDone={() => onToggleDone(i)} />
+          ))}
+        </ol>
+      </section>
+
+      <section className={`${card} p-5`}>
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#0B2A45]"><Award size={16} className="text-[#115D98]" /> Scholarships and opportunities</h3>
+        <div className="space-y-2">
+          {sub.opportunities.map((o) => (
+            <div key={o.name} className="flex items-center justify-between gap-3 rounded-2xl bg-[#f8faff] p-3">
+              <div className="min-w-0"><p className="truncate text-sm font-semibold text-[#0B2A45]">{o.name}</p><p className="text-xs text-slate-500">{o.org}</p></div>
+              <a href={o.url} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#115D98] px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0e4c7d]">View <ExternalLink size={11} /></a>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function FieldView({ field, doneMap, goFields, onSelect }) {
+  return (
+    <div>
+      <Crumbs items={[{ label: "Explore", onClick: goFields }, { label: field.name }]} />
+      <Banner icon={field.icon} title={field.name} text={field.blurb} />
+      <p className="mb-4 text-sm text-slate-500">Choose a career path to see your roadmap.</p>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {field.subcategories.map((sub) => {
+          const Icon = sub.icon;
+          const n = (doneMap[sub.id] || []).length;
+          return (
+            <button key={sub.id} onClick={() => onSelect(sub)} className={`group flex flex-col p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-lg ${card}`}>
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#115D98]/10 text-[#0B2A45] transition-colors group-hover:bg-[#115D98] group-hover:text-white"><Icon size={22} /></span>
+              <h3 className="mt-4 font-semibold text-[#0B2A45]">{sub.name}</h3>
+              <p className="mt-1 line-clamp-3 text-sm text-slate-500">{sub.overview}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5 text-[11px] font-medium text-slate-500">
+                <span className="rounded-full bg-[#f8faff] px-2.5 py-1">{sub.time.split(" (")[0]}</span>
+                <span className="rounded-full bg-[#f8faff] px-2.5 py-1">{sub.steps.length} steps</span>
+              </div>
+              <div className="mt-auto flex items-center gap-1 pt-4 text-xs font-semibold text-[#115D98]">
+                {n > 0 ? `${n} of ${sub.steps.length} done` : "View roadmap"} <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              </div>
             </button>
           );
         })}
       </div>
-      {list.length === 0 && <p className="mt-6 text-slate-500">No fields match your search. Try a different word.</p>}
+    </div>
+  );
+}
 
-      <Modal open={!!field} onClose={() => setOpen(null)} title={field ? `${field.name} roadmap` : ""} wide>
-        {field && (
+export default function Explore({ globalQuery = "" }) {
+  const [query, setQuery] = useState("");
+  const [field, setField] = useState(null);
+  const [sub, setSub] = useState(null);
+  const [done, setDone] = useState({});
+
+  const top = () => window.scrollTo?.({ top: 0, behavior: "smooth" });
+  const goFields = () => { setField(null); setSub(null); top(); };
+  const goField = () => { setSub(null); top(); };
+  const pickField = (f) => { setField(f); setSub(null); top(); };
+  const pickSub = (s) => { setSub(s); top(); };
+  const toggleDone = (id, i) => setDone((d) => { const cur = d[id] || []; return { ...d, [id]: cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i] }; });
+
+  const q = `${query} ${globalQuery}`.trim().toLowerCase();
+  const list = FIELDS.filter((f) => !q || [f.name, f.blurb, ...f.subcategories.map((s) => `${s.name} ${s.overview}`)].join(" ").toLowerCase().includes(q));
+
+  const viewKey = sub ? `r-${sub.id}` : field ? `f-${field.id}` : "grid";
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div key={viewKey} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+        {sub && field ? (
+          <RoadmapView field={field} sub={sub} doneSteps={done[sub.id] || []} onToggleDone={(i) => toggleDone(sub.id, i)} goFields={goFields} goField={goField} />
+        ) : field ? (
+          <FieldView field={field} doneMap={done} goFields={goFields} onSelect={pickSub} />
+        ) : (
           <div>
-            <p className="mb-6 text-slate-500">{field.blurb}</p>
-            <ol className="relative ml-4 border-l-2 border-dashed border-[#115D98]/25">
-              {field.steps.map(([title, text, link], i) => (
-                <li key={title} className="relative pb-7 pl-8 last:pb-1">
-                  <span className="absolute -left-[17px] top-0 grid h-8 w-8 place-items-center rounded-full bg-[#115D98] text-sm font-semibold text-white ring-4 ring-white">{i + 1}</span>
-                  <p className="font-semibold">Step {i + 1}: {title}</p>
-                  <p className="text-sm text-slate-500">{text}</p>
-                  <a href={link} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#0B2A45] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#081f33]">
-                    Access Course <ExternalLink size={14} />
-                  </a>
-                </li>
-              ))}
-            </ol>
-            <button onClick={() => setFollowing((l) => (isFollowing ? l.filter((x) => x !== field.id) : [...l, field.id]))}
-              className={`mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${isFollowing ? "bg-[#115D98]/10 text-[#115D98]" : "bg-[#115D98] text-white hover:bg-[#0e4c7d]"}`}>
-              {isFollowing ? <><Check size={16} /> Following this path</> : <><Plus size={16} /> Follow this path</>}
-            </button>
+            <h2 className="text-2xl font-semibold text-[#0B2A45]">Explore careers.</h2>
+            <p className="mb-5 text-slate-500">Pick a field to see a step-by-step roadmap made for you.</p>
+
+            <div className="relative mb-7 max-w-xl">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search careers, e.g. design, nursing, farming" aria-label="Search career fields"
+                className="w-full rounded-full border border-[#115D98]/10 bg-white/90 py-3 pl-11 pr-10 shadow-sm outline-none focus:ring-2 focus:ring-[#115D98]/20" />
+              {query && <button onClick={() => setQuery("")} aria-label="Clear search" className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#115D98]"><X size={16} /></button>}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {list.map((f) => {
+                const Icon = f.icon;
+                return (
+                  <button key={f.id} onClick={() => pickField(f)} className={`group flex flex-col p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-lg ${card}`}>
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#115D98]/10 text-[#0B2A45] transition-colors group-hover:bg-[#115D98] group-hover:text-white"><Icon size={22} /></span>
+                    <h3 className="mt-4 text-lg font-semibold text-[#0B2A45]">{f.name}</h3>
+                    <p className="text-sm text-slate-500">{f.blurb}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {f.subcategories.map((s) => <span key={s.id} className="rounded-full bg-[#f8faff] px-2.5 py-1 text-[11px] font-medium text-slate-500">{s.name}</span>)}
+                    </div>
+                    <p className="mt-auto flex items-center gap-1 pt-4 text-xs font-semibold text-[#115D98]">
+                      {f.subcategories.length} career paths <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+            {list.length === 0 && <p className="mt-8 text-slate-500">No fields match your search. Try a different word.</p>}
           </div>
         )}
-      </Modal>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
